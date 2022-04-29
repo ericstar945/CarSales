@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div>
+    <h1>Cars for Sale</h1>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">Price</th>
+            <th scope="col">Year</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!-- Construct the rest of courses here -->
+        {% for data in carData %}
+        <tr>
+            <td scope='row'>{{data["make"]}}</td>
+            <td>{{data["model"]}}</td>
+            <td>{{data["price"]}}</td>
+            <td>{{data["year"]}}</td>
+            <td>
+                <form action ="{{ url_for('carlistings') }}" method="POST">
+                    <input type="hidden" name="make" value="{{data['make']}}">
+                    <input type="hidden" name="model" value="{{data['model']}}">
+                    <input type="hidden" name="price" value="{{data['price']}}">
+                    <input type="hidden" name="description" value="{{data['description']}}">
+                <button>View</button>
+                </form>
+            </td>
+
+            <td>
+                <form action="{{  url_for('saved')}}" method="POST">
+                    <input type="hidden" name="make" value="{{data['make']}}">
+                    <input type="hidden" name="model" value="{{data['model']}}">
+                    <input type="hidden" name="price" value="{{data['price']}}">
+                <button>Add to Favorites</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
