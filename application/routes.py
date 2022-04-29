@@ -1,5 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request
+from application.models import User, Car, Favorites
 
 @app.route("/")
 @app.route("/index")
@@ -33,13 +34,6 @@ def carlistings():
     description = request.form.get('description')
 
     return render_template("carlistings.html", make=make, model=model, price=price, description=description)
-
-class User(db.Document):
-    user_id = db.IntField(unique=True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=50)
-    email = db.StringField(max_length=30)
-    password = db.StringField(max_length=30)
 
 @app.route("/user")
 def user():
