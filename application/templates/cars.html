@@ -21,7 +21,7 @@
         <tr>
             <td scope='row'>{{data["make"]}}</td>
             <td>{{data["model"]}}</td>
-            <td>{{data["price"]}}</td>
+            <td>${{data["price"]}}</td>
             <td>{{data["year"]}}</td>
             <td>
                 <form action ="{{ url_for('carlistings') }}" method="POST">
@@ -29,6 +29,10 @@
                     <input type="hidden" name="model" value="{{data['model']}}">
                     <input type="hidden" name="price" value="{{data['price']}}">
                     <input type="hidden" name="description" value="{{data['description']}}">
+                    <input type="hidden" name="picname" value="{{data['picname']}}">
+                    <input type="hidden" name="picname1" value="{{data['picname1']}}">
+                    <input type="hidden" name="picname2" value="{{data['picname2']}}">
+
                 <button>View</button>
                 </form>
             </td>
@@ -38,6 +42,7 @@
                     <input type="hidden" name="make" value="{{data['make']}}">
                     <input type="hidden" name="model" value="{{data['model']}}">
                     <input type="hidden" name="price" value="{{data['price']}}">
+                    <input type="hidden" name="car_id" value="{{data['car_id']}}">
                 <button>Add to Favorites</button>
                 </form>
             </td>

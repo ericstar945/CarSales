@@ -5,13 +5,13 @@
 <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{{ url_for('static',filename='images/world.jpg')}}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+        <img src="{{ url_for('file' ,filename=picname) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
       </div>
       <div class="carousel-item">
-        <img src="{{ url_for('static',filename='images/world.jpg')}}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+        <img src="{{ url_for('file' ,filename=picname1) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
       </div>
       <div class="carousel-item">
-        <img src="{{ url_for('static',filename='images/fathead.jpg')}}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+        <img src="{{ url_for('file' ,filename=picname2) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -31,7 +31,12 @@
 <p> Make: {{ make }} </p> <br>
 <p> Model: {{ model }} </p> <br>
 <p> Description: {{ description }} </p> <br>
-<p> Price: {{ price }} </p> <br>
+<p> Price: ${{ price }} </p> <br>
+
+{% if session['username'] %}
+<a href="{{url_for('saved')}}">Return to Saved Vehicles</a> <br><br>
+{% endif %}
+<a href="{{url_for('cars')}}">More Listings</a>
 
 
 {% endblock %}

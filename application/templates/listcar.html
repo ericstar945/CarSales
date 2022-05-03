@@ -1,9 +1,64 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<div>
-    <h1>List Your Car</h1>
-</div>
+<main>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form name="login" action="" method="post" enctype="multipart/form-data">
+                <fieldset class="form-group">
+                    <legend>{{title}}</legend>
+                    {{form.hidden_tag()}}
+                    <p>
+                        {{form.make.label}}<br>
+                        {{form.make}}
+                        {% for error in form.make.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                    </p>
+                    <p>
+                        {{form.model.label}}<br>
+                        {{form.model}}
+                        {% for error in form.model.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                    </p>
+                    <p>
+                        {{form.description.label}}<br>
+                        {{form.description}}
+                        {% for error in form.description.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                    </p>
+                    <p>
+                        {{form.year.label}}<br>
+                        {{form.year}}
+                        {% for error in form.year.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                    </p>
+                    <p>
+                        {{form.price.label}}<br>
+                        ${{form.price}}
+                        {% for error in form.price.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                    </p>
+                    <p>
+                        <p>
+                            {{form.picture.label}}<br>
+                            {{form.picture}}
+                            {{form.picture1}}
+                            {{form.picture2}}
+                            {% for error in form.picture.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                        </p>
+                        {{form.submit()}}
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
 
 {% endblock %}

@@ -2,14 +2,55 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-12 text center">
-
+<div>
+    {% if not cars %}
+        <h1> You have no saved vehicles!</h1>
+    {% else %}
         <h1>Your Saved Vehicles</h1>
-        <p>Make: {{ make }} </p>
-        <p>Model: {{ model }} </p>
-        <p>Price: {{ price }} </p>
-    </div>
+
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">Price</th>
+            <th scope="col">Year</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!-- Construct the rest of courses here -->
+        {% for car in cars %}
+        <tr>
+            <td scope='row'>{{car.r2["make"]}}</td>
+            <td>{{car.r2["model"]}}</td>
+            <td>{{car.r2["price"]}}</td>
+            <td>{{car.r2["year"]}}</td>
+
+            <td>
+                <form action ="{{ url_for('carlistings') }}" method="POST">
+                    <input type="hidden" name="make" value="{{car.r2['make']}}">
+                    <input type="hidden" name="model" value="{{car.r2['model']}}">
+                    <input type="hidden" name="price" value="{{car.r2['price']}}">
+                    <input type="hidden" name="description" value="{{car.r2['description']}}">
+                    <input type="hidden" name="picname" value="{{car.r2['picname']}}">
+                    <input type="hidden" name="picname1" value="{{car.r2['picname1']}}">
+                    <input type="hidden" name="picname2" value="{{car.r2['picname2']}}">
+
+                <button>View</button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+    {% endif %}
 </div>
+
 
 {% endblock %}

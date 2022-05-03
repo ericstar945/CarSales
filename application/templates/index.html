@@ -1,13 +1,20 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+    <main class="index">
         
-        <div>
-            <h1>S & G Automotive</h1>
-            <a href="{{ url_for('cars') }}" class="btn btn-light btn-purple">Shop Vehicles</a>
-            <a href="{{ url_for('listcar') }}" class="btn btn-light btn-purple">Sell Vehicle</a>
+        <div class="title">
+            <h1>G & S Automotive</h1>
+            <a href="{{url_for('cars')}}">Shop Vehicles</a>
+            <a href="{{url_for('listcar')}}">Sell Vehicle</a>
 
         </div>
 
 
-{% endblock %}
+
+
+    </main>
+
+    {% endblock %}
+
