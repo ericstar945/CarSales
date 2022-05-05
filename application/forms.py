@@ -29,6 +29,7 @@ class CarForm(FlaskForm):
     description = StringField("Description", validators=[DataRequired("Please fill out this field"), Length(min=2, max=255)])
     year = StringField("Year", validators=[DataRequired("Please fill out this field"), Length(min=2, max=55)])
     price = StringField("Price", validators=[DataRequired("Please fill out this field"), Length(min=2, max=55)])
+    phone = StringField("Phone Number", validators=[DataRequired("Please add a phone Number"), Length(max=10)])
     picture = FileField("Upload Pictures", validators=[DataRequired("Please fill out this field")])
     picture1 = FileField(validators=[DataRequired("Please fill out this field")])
     picture2 = FileField(validators=[DataRequired("Please fill out this field")])

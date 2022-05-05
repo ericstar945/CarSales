@@ -1,42 +1,52 @@
 {% extends "layout.html" %}
-
 {% block content %}
-
-<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ url_for('file' ,filename=picname) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+<main class="backgroundlist">
+  <a href="{{url_for('cars')}}" class="plist">Return to Listings</a>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ url_for('file' ,filename=picname) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('file' ,filename=picname1) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('file' ,filename=picname2) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('file' ,filename=picname1) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('file' ,filename=picname2) }}" class="rounded mx-auto d-block" style="width: 700px; height: auto">
-      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+
+
+
+
+  <h1 class="listing plist">Current Listing</h1>
+  <div class="media">>
+    <div class="media-body">
+      <h5 class="mt-0 plist">{{make}} {{model}}</h5>
+      <p class="plist">{{description}}</p><br><br>
+      <p class="plist">Seller Asking Price: ${{price}}</p><br>
+      <p class="plist">Seller Phone Number: # {{phone}}</p>
+    </div>
   </div>
+  <!-- <p> Make: {{ make }} </p> <br>
+  <p> Model: {{ model }} </p> <br>
+  <p> Description: {{ description }} </p> <br>
+  <p> Price: ${{ price }} </p> <br> -->
 
-
-
-
-<h1>Current Listing</h1>
-<p> Make: {{ make }} </p> <br>
-<p> Model: {{ model }} </p> <br>
-<p> Description: {{ description }} </p> <br>
-<p> Price: ${{ price }} </p> <br>
-
-{% if session['username'] %}
-<a href="{{url_for('saved')}}">Return to Saved Vehicles</a> <br><br>
-{% endif %}
-<a href="{{url_for('cars')}}">More Listings</a>
+  {% if session['username'] %}
+  <a href="{{url_for('saved')}}" class="plist">Return to Saved Vehicles</a> <br><br>
+  {% endif %}
+  <a href="{{url_for('cars')}}" class="plist">More Listings</a>
+</main>
 
 
 {% endblock %}

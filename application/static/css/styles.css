@@ -17,12 +17,12 @@ input[type=text], input[type=password]{
     position: absolute;
     font-size: 20px;
     right: 3em;
-    top: 3em;
+    top: 4em;
 }
 
 /* Kenneth Code */
  
-#navbar
+#navbar1
 {
     background-color: rgba(7, 5, 122, 0.884);
     padding-left: 5%;
@@ -32,11 +32,11 @@ input[type=text], input[type=password]{
     /* box-shadow: 0px 10px 50px 1px rgba(7, 5, 122, 0.884); */
 
 }
-#navbar li
+#navbar1 li
 {
    display: inline-block;
 }
-#navbar li a
+#navbar1 li a
 {
    text-decoration: none;
    font-size: 25px;
@@ -78,13 +78,27 @@ main{
    background-size: cover;
    width: 100%;
    min-height: 800px;
-   margin-top: -5%;
+   /* margin-top: -5%; */
+   padding-top: 1px;
 }
 
 .title
 {
    text-align: center;
    margin-top: 60px;
+}
+.row
+{
+    background-image: url("/static/images/carbonfiber6.PNG");
+    color: rgba(255, 255, 255, 0.966);
+    padding-top: 5px;
+    background-size: cover;
+    min-height: 800px;
+    margin-left: 21%;
+    margin-right: 21%;
+    padding-left: 30px;
+    padding-right: 30px;
+
 }
 
 
@@ -96,6 +110,21 @@ main{
 
 /*---------------------------------------------------------------------*/
 /*------------------------------My account------------------------------*/
+
+#page_body
+{
+    min-height: 800px;
+    /* text-align: center; */
+    padding-left: 30px;
+    color: rgba(255, 255, 255, 0.966);
+}
+
+main footer
+{
+    color: rgba(255, 255, 255, 0.966);
+    text-align: center;
+    font-size: 10px;
+}
 
 
 input[type=text]
@@ -116,6 +145,24 @@ input[type=date]
 {
    margin-bottom: 10px;
 }
+
+.background
+{
+    background-image: url("/static/images/carbonfiber6.PNG");
+    padding-top: 5px;
+    background-size: cover;
+    margin-left: 21%;
+    margin-right: 21%;
+}
+.backgroundlist
+{
+    background-image: url("/static/images/carbonfiber6.PNG");
+    padding-top: 5px;
+    background-size: cover;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
 
 .names
 {
@@ -152,6 +199,148 @@ input[type=range]
 {
    width: 30%;
 }
+main footer
+{
+    color: rgba(255, 255, 255, 0.966);
+    text-align: center;
+    font-size: 10px;
+}
+h3 {
+   display: block;
+   font-size: 1.17em;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   font-weight: bold;
+}
+.alert {
+   padding: 15px;
+   margin-bottom: 0px;
+   border: 1px solid transparent;
+   border-radius: 4px;
+ }
+ 
+ .alert h4 {
+   margin-top: 0;
+   color: inherit;
+ }
+ 
+ .alert .alert-link {
+   font-weight: bold;
+ }
+ 
+ .alert > p,
+ .alert > ul {
+   margin-bottom: 0;
+ }
+ 
+ .alert > p + p {
+   margin-bottom: 0px;
+    position: absolute;
+    top: -10px;
+ }
+ 
+ .alert-dismissable,
+ .alert-dismissible {
+   padding-right: 35px;
+ }
+ 
+ .alert-dismissable .close,
+ .alert-dismissible .close {
+   position: relative;
+   top: -2px;
+   right: -21px;
+   color: inherit;
+ }
+ 
+ .alert-success {
+   background-color: #dff0d8;
+   opacity: initial;
+   border-color: white;
+   color: #3c763d;
+   position: absolute;
+   top: 71px;
+   width: 1214px;
+}
+ 
+ .alert-success hr {
+   border-top-color: #c9e2b3;
+ }
+ 
+ .alert-success .alert-link {
+   color: #2b542c;
+ }
+ 
+ .alert-info {
+   background-color: #d9edf7;
+   border-color: #bce8f1;
+   color: #31708f;
+ }
+ 
+ .alert-info hr {
+   border-top-color: #a6e1ec;
+ }
+ 
+ .alert-info .alert-link {
+   color: #245269;
+ }
+ 
+ .alert-warning {
+   background-color: #fcf8e3;
+   border-color: #faebcc;
+   color: #8a6d3b;
+ }
+ 
+ .alert-warning hr {
+   border-top-color: #f7e1b5;
+ }
+ 
+ .alert-warning .alert-link {
+   color: #66512c;
+ }
+ 
+ .alert-danger {
+   background-color: #f2dede;
+   border-color: #ebccd1;
+   color: #a94442;
+ }
+ 
+ .alert-danger hr {
+   border-top-color: #e4b9c0;
+ }
+ 
+ .alert-danger .alert-link {
+   color: #843534;
+ }
+ #customers {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+ }
+ 
+ #customers td, #customers th {
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+ 
+ /* #customers tr:nth-child(even){background-color: #f2f2f2;} */
+ 
+ #customers tr:hover {background-color: #ddd;}
+ 
+ #customers th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: rgba(7, 5, 122, 0.884);
+   color: white;
+ }
+ .listing{
+   color:white
+ }
+ .plist{
+   color:white;
+ }
 
 /* add your code */
 

@@ -1,56 +1,60 @@
 {% extends "layout.html" %}
-
+{% include "includes/nav.html" %}
 {% block content %}
+<main class="index">
+    <div>
+        <h1>Cars for Sale</h1>
 
-<div>
-    <h1>Cars for Sale</h1>
+        <table id="customers">
+            <thead>
+            <tr>
+                <th scope="col">Make</th>
+                <th scope="col">Model</th>
+                <th scope="col">Price</th>
+                <th scope="col">Year</th>
+                <th scope="col">View</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Make</th>
-            <th scope="col">Model</th>
-            <th scope="col">Price</th>
-            <th scope="col">Year</th>
-        </tr>
-        </thead>
-        <tbody>
+            <!-- Construct the rest of courses here -->
+            {% for data in carData %}
+            <tr>
+                <td scope='row'>{{data["make"]}}</td>
+                <td>{{data["model"]}}</td>
+                <td>${{data["price"]}}</td>
+                <td>{{data["year"]}}</td>
+                <td>
+                    <form action ="{{ url_for('carlistings') }}" method="POST">
+                        <input type="hidden" name="make" value="{{data['make']}}">
+                        <input type="hidden" name="year" value="{{data['year']}}">
+                        <input type="hidden" name="model" value="{{data['model']}}">
+                        <input type="hidden" name="price" value="{{data['price']}}">
+                        <input type="hidden" name="phone" value="{{data['phone']}}">
+                        <input type="hidden" name="description" value="{{data['description']}}">
+                        <input type="hidden" name="picname" value="{{data['picname']}}">
+                        <input type="hidden" name="picname1" value="{{data['picname1']}}">
+                        <input type="hidden" name="picname2" value="{{data['picname2']}}">
 
-        <!-- Construct the rest of courses here -->
-        {% for data in carData %}
-        <tr>
-            <td scope='row'>{{data["make"]}}</td>
-            <td>{{data["model"]}}</td>
-            <td>${{data["price"]}}</td>
-            <td>{{data["year"]}}</td>
-            <td>
-                <form action ="{{ url_for('carlistings') }}" method="POST">
-                    <input type="hidden" name="make" value="{{data['make']}}">
-                    <input type="hidden" name="model" value="{{data['model']}}">
-                    <input type="hidden" name="price" value="{{data['price']}}">
-                    <input type="hidden" name="description" value="{{data['description']}}">
-                    <input type="hidden" name="picname" value="{{data['picname']}}">
-                    <input type="hidden" name="picname1" value="{{data['picname1']}}">
-                    <input type="hidden" name="picname2" value="{{data['picname2']}}">
+                    <button>View</button>
+                    </form>
+                </td>
 
-                <button>View</button>
-                </form>
-            </td>
-
-            <td>
-                <form action="{{  url_for('saved')}}" method="POST">
-                    <input type="hidden" name="make" value="{{data['make']}}">
-                    <input type="hidden" name="model" value="{{data['model']}}">
-                    <input type="hidden" name="price" value="{{data['price']}}">
-                    <input type="hidden" name="car_id" value="{{data['car_id']}}">
-                <button>Add to Favorites</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-        
-        </tbody>
-    </table>
-</div>
-
+                <td>
+                    <form action="{{ url_for('saved')}}" method="POST">
+                        <input type="hidden" name="make" value="{{data['make']}}">
+                        <input type="hidden" name="model" value="{{data['model']}}">
+                        <input type="hidden" name="price" value="{{data['price']}}">
+                        <input type="hidden" name="car_id" value="{{data['car_id']}}">
+                    <button>Add to Favorites</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            
+            </tbody>
+        </table>
+    </div>
+</main>
 {% endblock %}

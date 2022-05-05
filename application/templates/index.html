@@ -1,20 +1,33 @@
 {% extends "layout.html" %}
-
 {% block content %}
+<body>
 
-    <main class="index">
-        
-        <div class="title">
-            <h1>G & S Automotive</h1>
-            <a href="{{url_for('cars')}}">Shop Vehicles</a>
-            <a href="{{url_for('listcar')}}">Sell Vehicle</a>
+    <main>
+        <nav id="navbar1">
+                    <ul>
+                        <!-- <li><a href="#">Browse Vehicles</a></li> -->
+                        <li><a href="{{url_for('about')}}">About Us</a></li>
+                        <li><a href="{{url_for('saved')}}">Saved Vehicles</a></li>
+                        {% if not session['username'] %}
+                        <li><a href="{{url_for('register')}}">Create Account</a></li>
+                        {% endif %}
+                        {% if not session['username'] %}
+                        <li><a href="{{url_for('login')}}">Log in</a></li>
+                        {% else %}
+                        <li><a href="{{url_for('logout')}}">Logout</a></li>
+                        {% endif %}
 
-        </div>
+                    </ul>
+        </nav>
+                <div class="title">
+                        <h1>G & S Automotive</h1>
+                        <a href="{{url_for('cars')}}">Shop Vehicles</a>
+                        <a href="{{url_for('listcar')}}">Sell Vehicle</a>
 
-
-
-
+                </div>
     </main>
 
-    {% endblock %}
+</body>
+{% endblock %}
+
 

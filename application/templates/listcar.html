@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
-
+{% include "includes/nav.html" %}
 {% block content %}
+
 <main>
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <form name="login" action="" method="post" enctype="multipart/form-data">
-                <fieldset class="form-group">
-                    <legend>{{title}}</legend>
+                
+                    <h2>{{title}}</h2>
                     {{form.hidden_tag()}}
                     <p>
                         {{form.make.label}}<br>
@@ -44,6 +45,13 @@
                     {% endfor %}
                     </p>
                     <p>
+                        {{form.phone.label}}<br>
+                        #{{form.phone}}
+                        {% for error in form.phone.errors %}
+                        <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                    </p>
+                    <p>
                         <p>
                             {{form.picture.label}}<br>
                             {{form.picture}}
@@ -55,7 +63,7 @@
                         </p>
                         {{form.submit()}}
                     </p>
-                </fieldset>
+                
             </form>
         </div>
     </div>

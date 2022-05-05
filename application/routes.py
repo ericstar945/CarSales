@@ -94,13 +94,14 @@ def listcar():
         description = form.description.data
         year = form.year.data
         price = form.price.data
+        phone = form.phone.data
         picture = request.files['picture']
         picture1 = request.files['picture1']
         picture2 = request.files['picture2']
         picname = str(car_id) + "carpic" + year + str(car_id)
         picname1 = str(car_id) + "nextcarpic" + year + str(car_id+1) 
         picname2 = str(car_id) + "lastcarpic" + year + str(car_id+2)
-        car = Car(car_id=car_id, make=make, model=model, description=description, year=year, price=price, picname=picname, picname1=picname1, picname2=picname2)
+        car = Car(car_id=car_id, make=make, model=model, description=description, year=year, phone=phone, price=price, picname=picname, picname1=picname1, picname2=picname2)
         fs.put(picture, filename=picname)
         fs.put(picture1, filename=picname1)
         fs.put(picture2, filename=picname2)
@@ -109,9 +110,8 @@ def listcar():
         return redirect(url_for('index'))
 
     return render_template("listcar.html", form=form, title="Create a Listing")
-@app.route("/saved", methods=["GET", "POST"])
+@app.route("/saved", methods=['GET', 'POST'])
 def saved():
-
     if not session.get('username'):
         return redirect(url_for('login'))
 
@@ -171,31 +171,33 @@ def carlistings():
     model = request.form.get('model')
     price = request.form.get('price')
     description = request.form.get('description')
+    phone = request.form.get('phone')
     picname = request.form.get('picname')
     picname1 = request.form.get('picname1')
     picname2 = request.form.get('picname2')
-    return render_template("carlistings.html", make=make, model=model, price=price, description=description, picname=picname, picname1=picname1, picname2=picname2)
+    return render_template("carlistings.html", make=make, model=model, price=price, description=description, phone=phone, picname=picname, picname1=picname1, picname2=picname2)
 @app.route("/file/<filename>")
 def file(filename):
     thing = fs.get_last_version(filename=filename)
     im = Image.open(thing)
     return serve_pil_image(im)
-@app.route("/user")
-def user():
-    #User(user_id=1, first_name="Eric", last_name="Greilich", email="ericstar999@gmail.com", password="123456").save()
-    #User(user_id=2, first_name="Ricky", last_name="Allen", email="ricky@gmail.com", password="123456").save()
-    users = User.objects.all()
-    return render_template("user.html", users=users)
 
-# @app.context_processor
-# def base():
-#     form = SearchForm()
-#     return dict(form=form)
+@app.route('/remove', methods=['GET', 'POST'])
+def remove():
+    user_id = session.get('user_id')
+    car_id = request.form.get('car_id')
+    picname = request.form.get('picname')
+    picname1 = request.form.get('picname1')
+    picname2 = request.form.get('picname2')
+    Favorites.objects(user_id=user_id, car_id=car_id).delete()
+    fs.delete(picname)
+    fs.delete(picname1)
+    fs.delete(picname2)
+    return redirect(url_for('saved'))
 
-# @app.route("/search", methods=['POST'])
-# def search():
-#     form = SearchForm()
-#     cars = Car.objects.all()
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
     
-
 

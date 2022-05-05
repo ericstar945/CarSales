@@ -24,6 +24,7 @@ class Car(db.Document):
     description = db.StringField(max_length=255)
     year = db.StringField(max_length=10)
     price = db.StringField(max_length=20)
+    phone = db.StringField(max_length=10)
     picture = db.FileField()
     picture1 = db.FileField()
     picture2 = db.FileField()
